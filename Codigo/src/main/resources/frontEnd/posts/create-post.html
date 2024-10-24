@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPet - Criar Post</title>
+    <link rel="icon" href="../imagens/logoPet.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #48067f;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #48067f;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d6660a;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #d6660a;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #b55509;
+        }
+    </style>
+</head>
+<body>
+    <header class="container-fluid">
+      <div class="d-flex flex-column flex-md-row align-items-center">
+        <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+        <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+          <ul class="nav flex-column flex-md-row">
+            <li class="nav-item">
+              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+            </li>
+            <li class="nav-item">
+              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+            </li>
+          </ul>
+          <ul class="nav flex-column flex-md-row">
+            <li class="nav-item">
+              <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+            </li>
+            <li class="nav-item mt-2 mt-md-0 ms-md-2">
+              <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+            </li>
+            <li class="nav-item mt-2 mt-md-0 ms-md-2">
+              <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+    </header>
+
+    <div class="container">
+        <h1>Criar Post</h1>
+        <form id="post-form"> <!-- Removido action e method -->
+            <div class="form-group">
+                <label for="conteudo">Conteúdo do Post:</label>
+                <textarea id="conteudo" name="conteudo" required></textarea><br>
+            </div>
+
+            <div class="form-group">
+                <label for="imagem">URL da Imagem (opcional):</label>
+                <input type="url" id="imagem" name="imagem"><br>
+            </div>
+
+            <input type="submit" value="Enviar Post" class="button"> <!-- Adicionando a classe button -->
+        </form>
+    </div>
+
+    <div class="modal fade" id="postSuccessModal" tabindex="-1" aria-labelledby="postSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postSuccessModalLabel">Sucesso</h5>
+                </div>
+                <div class="modal-body">
+                    O post foi enviado com sucesso!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        async function submitPostForm(event) {
+            event.preventDefault(); 
+            const form = event.target;
+
+            const conteudo = form.querySelector('textarea[name="conteudo"]').value;
+            const imagem = form.querySelector('input[name="imagem"]').value || "imagem_inexistente"; 
+            const dateObj = new Date();
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0'); 
+            const year = dateObj.getFullYear();
+            const data = `${day}/${month}/${year}`; // Formatando a data
+
+            const id_usuario = localStorage.getItem('usuarioId');  // Pegando id do usuário armazenado no localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const id_local = urlParams.get('id_local');  // Pegando id do local da URL
+
+            if (!id_usuario || !id_local) {
+                alert('Erro: Usuário ou local não identificados.');
+                return;
+            }
+
+            // Criando o objeto para ser enviado
+            const postData = {
+                conteudo,
+                imagem,
+                data,
+                id_usuario: parseInt(id_usuario, 10),
+                id_local: parseInt(id_local, 10)
+            };
+
+            try {
+                const response = await fetch('http://localhost:6789/produto', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(postData)
+                });
+
+                // Modal de sucesso
+                var postSuccessModal = new bootstrap.Modal(document.getElementById('postSuccessModal'));
+                postSuccessModal.show();
+                form.reset(); // Reseta o formulário após envio
+
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao tentar enviar o post.');
+            }
+        }
+
+        window.onload = function() {
+            var form = document.getElementById('post-form');
+            form.addEventListener('submit', submitPostForm);
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const usuarioId = localStorage.getItem('usuarioId');
+            if (usuarioId) {
+                document.getElementById('logarLink').style.display = 'none';
+                document.getElementById('inscreverLink').style.display = 'none';
+                document.getElementById('contaIcon').style.display = 'block';
+            } else {
+                document.getElementById('contaIcon').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

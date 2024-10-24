@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPet</title>
+  <link rel="icon" href="../imagens/logoPet.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d6660a;
+    }
+
+    #admin-content {
+      padding: 20px;
+    }
+
+    .card {
+      margin: 20px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      color: #d6660a;
+      font-size: 1.5rem;
+    }
+
+    .card button {
+      background-color: #d6660a;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #a85307;
+    }
+
+    .admin-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .admin-actions a {
+      text-align: center;
+      background-color: #d6660a;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .admin-actions a:hover {
+      background-color: #a85307;
+    }
+    .nav-link {
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.card {
+    margin: 20px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 22rem; /* Aumentar a largura */
+    height: 28rem; /* Aumentar a altura */
+}
+
+.product-cont .col {
+    flex: 1 1 22%; /* Ajustar para a largura desejada das colunas */
+}
+
+.local-cont .col {
+    flex: 1 1 22%; /* Ajustar para a largura desejada das colunas de locais */
+}
+
+/* Para centralizar os títulos das seções de Lazer, Serviço, e Evento */
+h3 {
+    text-align: center; /* Centraliza o texto dos títulos */
+    color: #d6660a; /* Mesma cor dos títulos */
+}
+  </style>
+</head>
+
+<body>
+	<header class="container-fluid">
+	  <div class="d-flex flex-column flex-md-row align-items-center">
+	    <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+	    <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+	      <ul class="nav flex-column flex-md-row">
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+	        </li>
+	      </ul>
+	      <ul class="nav flex-column flex-md-row">
+	        <li class="nav-item">
+	          <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+	        </li>
+	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+	          <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+	        </li>
+	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+	          <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+	        </li>
+	      </ul>
+	    </nav>
+	  </div>
+	  <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+	</header>
+
+  <div id="admin-content" class="container">
+    <h1>Painel de Administração para Empresas</h1>
+
+    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; margin-left: 0px;">
+      <a id="cor" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../cadastroProduto/cadastro.html" style="background-color: #d6660a; transition: background-color 0.3s;">Cadastrar produto</a>
+      <a id="cor" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../cadastroLocal/localForm.html" style="background-color: #d6660a; transition: background-color 0.3s;">Cadastrar local</a>
+    </div>
+
+    <h2>Seus Produtos</h2>
+    <div id="lista-produtos" class="d-flex flex-wrap justify-content-center">
+		<section id="Produtos" class="container-fluid">
+		  <div class="container mt-3" style="display: flex; justify-content: center;">
+		    <div class="product-cont row row-cols-1 row-cols-md-4 g-4" style="display: flex; justify-content: center; align-items: center;">
+		      <!-- Produtos serão carregados aqui dinamicamente -->
+		    </div>
+		  </div>
+		</section>
+    </div>
+	
+	<!-- Modal para editar produto -->
+	<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="editProductModalLabel">Editar Produto</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="form-edit">
+	          <input type="text" id="editNome" name="nome" placeholder="Nome" required>
+	          <input type="text" id="editDescricao" name="descricao" placeholder="Descrição" required>
+	          <input type="text" id="editImagem" name="imagem" placeholder="Imagem URL" required>
+	          <input type="text" id="editPreco" name="preco" placeholder="Preço" required>
+	          <input type="text" id="editLink" name="link_site" placeholder="Link Site" required>
+	          <input type="text" id="editNota" name="nota_media" placeholder="Nota Média" required>
+	          <input type="submit" value="Salvar">
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- Modal para confirmar exclusão -->
+	<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        Tem certeza de que deseja excluir este produto?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-danger" onclick="excluirProdutoConfirmado()">Sim, excluir</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<h2 class="mt-5">Seus Locais</h2>
+
+	<section id="local-lazer" class="container-fluid mb-4 mt-3">
+	    <h3>Locais de Lazer</h3>
+	    <div id="lista-locais-lazer" class="d-flex flex-wrap justify-content-center">
+	        <div class="container mt-3" style="display: flex; justify-content: center;">
+	            <div class="local-cont row row-cols-1 row-cols-md-4 g-4" style="display: flex; justify-content: center; align-items: center;">
+	                <!-- Locais de Lazer serão carregados aqui dinamicamente -->
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+	<section id="local-servico" class="container-fluid mb-4 mt-5">
+	    <h3>Locais de Serviço</h3>
+	    <div id="lista-locais-servico" class="d-flex flex-wrap justify-content-center">
+	        <div class="container mt-3" style="display: flex; justify-content: center;">
+	            <div class="local-cont row row-cols-1 row-cols-md-4 g-4" style="display: flex; justify-content: center; align-items: center;">
+	                <!-- Locais de Serviço serão carregados aqui dinamicamente -->
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+	<section id="local-evento" class="container-fluid mb-4 mt-5">
+	    <h3>Locais de Evento</h3>
+	    <div id="lista-locais-evento" class="d-flex flex-wrap justify-content-center">
+	        <div class="container mt-3" style="display: flex; justify-content: center;">
+	            <div class="local-cont row row-cols-1 row-cols-md-4 g-4" style="display: flex; justify-content: center; align-items: center;">
+	                <!-- Locais de Evento serão carregados aqui dinamicamente -->
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+	<!-- Modal para editar local -->
+	<div class="modal fade" id="editLocalModal" tabindex="-1" aria-labelledby="editLocalModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="editLocalModalLabel">Editar Local</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="form-edit-local">
+	          <input type="text" id="editNomeLocal" name="nome" placeholder="Nome" required>
+	          <input type="text" id="editDescricaoLocal" name="descricao" placeholder="Descrição" required>
+	          <input type="text" id="editImagemLocal" name="imagem" placeholder="Imagem URL" required>
+
+	          <!-- Campos de endereço separados -->
+	          <input type="text" id="editRuaLocal" name="rua" placeholder="Rua" required>
+	          <input type="text" id="editNumeroLocal" name="numero" placeholder="Número" required>
+	          <input type="text" id="editBairroLocal" name="bairro" placeholder="Bairro" required>
+	          <input type="text" id="editCepLocal" name="cep" placeholder="CEP" required>
+
+	          <input type="submit" value="Salvar">
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+	<!-- Modal para confirmar exclusão local -->
+	<div class="modal fade" id="confirmDeleteModalLocal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        Tem certeza de que deseja excluir este local?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-danger" onclick="excluirLocalConfirmado()">Sim, excluir</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+<footer id="corB3" class="mt-5 p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <h6 class="mb-2">iPet</h6>
+        <p class="text-light">iPet é uma plataforma que visa facilitar donos de pet a encontrarem lugar ideal para seu amigo de 4 patas.</p>
+      </div>
+      <div class="col-md">
+        <h6 class="mb-2">Serviços</h6>
+        <p class="text-light">Restaurantes<br>Lojas<br>Shoppings</p>
+      </div>
+      <div class="col-md">
+        <h6 class="mb-2">Empresa</h6>
+        <p class="text-light">Quem Somos<br>Nossa Equipe<br>Contato</p>
+      </div>
+      <div class="col-md" style="flex: 3;">
+        <h6 class="mb-6">Receba Notícias</h6>
+        <form id="meuFormulario" action="#" method="post" class="d-flex">
+          <input style="height: 40px;" type="email" id="email" class="form-control me-1" placeholder="Seu e-mail" aria-label="Seu e-mail" aria-describedby="button-addon2" required>
+          <button style="margin: 0 !important; font-size: 11px !important; width: 30%;" id="corB" class="btn ms-1 mt-3 me-0 text-light rounded-2 fs-6 fw-bold" type="submit">Se Inscrever</button>
+        </form>
+        <div style="display: flex; justify-content: end;">
+          <a style="text-decoration: none;" href="https://www.instagram.com/ipetoficialbh/" target="_blank">
+            <img style="height: 50px; margin-top: 10px;" src="../../imagens/instagram.png" alt="Instagram">
+          </a>
+          <a style="text-decoration: none;" href="https://www.x.com/ipetoficial/" target="_blank">
+            <img style="height: 50px; margin-top: 10px;" src="../../imagens/twitter.png" alt="Twitter">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr style="border-top: 2px solid white; width: 100%; margin-top: 0px;">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="color: white">
+    <p class="mb-0 me-md-5">Copyright iPet</p>
+    <div class="d-flex align-items-center">
+      <img src="../../imagens/logoPet.png" width="100px" height="80px" alt="Logo">
+    </div>
+  </div>
+</footer>
+<script>
+let produtos = [];
+
+document.addEventListener("DOMContentLoaded", function() {
+  const usuarioId = localStorage.getItem('usuarioId');
+
+  if (!usuarioId) {
+    alert('Você precisa estar logado para acessar os produtos.');
+    window.location.href = 'loginForm.html';
+    return;
+  }
+
+  fetch("http://localhost:6789/produtos", { method: "GET" })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na resposta da API');
+      }
+      return response.json();
+    })
+    .then(produtosResponse => {
+      produtos = produtosResponse;
+      const productContainer = document.querySelector('.product-cont');
+      productContainer.innerHTML = "";
+
+      const produtosFiltrados = produtos.filter(produto => produto.id_empresa == usuarioId);
+
+      if (produtosFiltrados.length === 0) {
+        productContainer.innerHTML = "<p>Nenhum produto encontrado para esta empresa.</p>";
+      } else {
+        produtosFiltrados.forEach(produto => {
+          const productHTML = 			`
+			          <div class="col localStyle" style="width: 18rem;">
+			            <div class="card-body text-center">
+			              <div><img src="${produto.imagem}" class="img-fluid"></div>
+			              
+			              <h5 class="mt-3" style="font-weight: 800; color: #E85D0C;">${produto.nome}</h5>
+			              <p>${produto.descricao}</p>
+			              <p><strong>Preço:</strong> R$ ${produto.preco.toFixed(2)}</p>
+			              <p><strong>Nota média:</strong> ${produto.nota_media}</p>
+			              <p><strong>Link:</strong> <a href="${produto.link_site}" target="_blank">${produto.link_site}</a></p>
+			              <div class="mt-3 d-flex justify-content-center">
+			                <a href="javascript:void(0);" onclick="editarProduto(${produto.id_produto});" class="mb-1 ms-1 btn text-light fw-bold me-2" style="background-color: #E85D0C; padding: 10px 15px; border-radius: 10px;">Editar</a>
+			                <a href="javascript:void(0);" onclick="confirmarExclusao(${produto.id_produto});" class="mb-1 me-1 btn text-light fw-bold" style="background-color: #E85D0C; padding: 10px 15px; border-radius: 10px;">Excluir</a>
+			              </div>
+			            </div>
+			          </div>
+			          `;
+          productContainer.innerHTML += productHTML;
+        });
+      }
+    })
+    .catch(error => console.error("Erro ao carregar produtos:", error));
+});
+
+let produtoIdParaEditar;
+
+document.getElementById('form-edit').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const nomeAtualizado = document.getElementById('editNome').value.trim();
+  const descricaoAtualizada = document.getElementById('editDescricao').value.trim();
+  const imagemAtualizada = document.getElementById('editImagem').value.trim();
+  const precoAtualizado = parseFloat(document.getElementById('editPreco').value.trim()) || 0;
+  const linkSiteAtualizado = document.getElementById('editLink').value.trim();
+  const notaAtualizada = parseFloat(document.getElementById('editNota').value.trim()) || 0; 
+  const idempresa = localStorage.getItem('usuarioId'); 
+  const dadosAtualizados = {
+    nome: nomeAtualizado,
+    descricao: descricaoAtualizada,
+    imagem: imagemAtualizada,
+    preco: precoAtualizado, 
+    link_site: linkSiteAtualizado,
+    nota_media: notaAtualizada, 
+    id_empresa: parseInt(idempresa) || 0
+  };
+
+  try {
+    const response = await fetch(`http://localhost:6789/produto/${produtoIdParaEditar}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dadosAtualizados)
+    });
+
+    if (response.ok) {
+      alert('Produto atualizado com sucesso!');
+      location.reload();
+    } else {
+      alert('Erro ao atualizar o produto.');
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Erro ao atualizar o produto.');
+  }
+});
+
+
+function editarProduto(produtoId) {
+  produtoIdParaEditar = produtoId;
+  const produto = produtos.find(p => p.id_produto === produtoId);
+  
+  if (!produto) {
+    alert("Produto não encontrado!");
+    return;
+  }
+
+  document.getElementById('editNome').value = produto.nome;
+  document.getElementById('editDescricao').value = produto.descricao;
+  document.getElementById('editImagem').value = produto.imagem;
+  document.getElementById('editPreco').value = produto.preco;
+  document.getElementById('editLink').value = produto.link_site;
+  document.getElementById('editNota').value = produto.nota_media;
+
+  const myModal = new bootstrap.Modal(document.getElementById('editProductModal'), {});
+  myModal.show();
+}
+
+  let produtoIdParaExcluir;
+
+  function confirmarExclusao(produtoId) {
+    produtoIdParaExcluir = produtoId;
+    var myModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+    myModal.show();
+  }
+
+  async function excluirProdutoConfirmado() {
+    try {
+      const response = await fetch(`http://localhost:6789/produto/${produtoIdParaExcluir}`, {
+        method: 'DELETE'
+      });
+
+      alert('Produto excluído com sucesso!');
+      location.reload();
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+      alert('Erro ao tentar excluir o produto.');
+    }
+  }
+</script>
+
+<script>
+	let locais = [];
+
+	document.addEventListener("DOMContentLoaded", function() {
+	  const usuarioId = localStorage.getItem('usuarioId');
+
+	  if (!usuarioId) {
+	    alert('Você precisa estar logado para acessar os locais.');
+	    window.location.href = 'loginForm.html';
+	    return;
+	  }
+
+	  fetch("http://localhost:6789/locais", { method: "GET" })
+	    .then(response => {
+	      if (!response.ok) {
+	        throw new Error('Erro na resposta da API');
+	      }
+	      return response.json();
+	    })
+	    .then(locaisResponse => {
+	      locais = locaisResponse;
+	      const localLazerContainer = document.querySelector('#lista-locais-lazer .local-cont');
+	      const localServicoContainer = document.querySelector('#lista-locais-servico .local-cont');
+	      const localEventoContainer = document.querySelector('#lista-locais-evento .local-cont');
+
+	      localLazerContainer.innerHTML = "";
+	      localServicoContainer.innerHTML = "";
+	      localEventoContainer.innerHTML = "";
+
+	      const locaisFiltrados = locais.filter(local => local.id_empresa == usuarioId);
+
+	      if (locaisFiltrados.length === 0) {
+	        localLazerContainer.innerHTML = "<p>Nenhum local de lazer encontrado para esta empresa.</p>";
+	        localServicoContainer.innerHTML = "<p>Nenhum local de serviço encontrado para esta empresa.</p>";
+	        localEventoContainer.innerHTML = "<p>Nenhum local de evento encontrado para esta empresa.</p>";
+	      } else {
+	        locaisFiltrados.forEach(local => {
+	          const localHTML = `
+			  <div class="col localStyle" style="width: 18rem; height: 25rem;">
+			    <div class="card-body text-center d-flex flex-column justify-content-between">
+			      
+			      <div class="img-container mb-3" style="width: 100%; height: 150px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+			        <img src="${local.imagem_url}" class="img-fluid" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+			      </div>
+			      
+			      <h5 class="mt-3" style="font-weight: 800; color: #E85D0C;">${local.nome}</h5>
+			      
+			      <p class="text-truncate">${local.descricao}</p>
+			      <p><strong>Endereço:</strong> ${local.rua}, ${local.numero}, ${local.bairro}, CEP: ${local.cep}</p>
+			      <p><strong>Nota média:</strong> ${local.nota_media}</p>
+
+			      <div class="mt-3 d-flex justify-content-center">
+			        <a href="javascript:void(0);" onclick="editarLocal(${local.id_local});" class="mb-1 ms-1 btn text-light fw-bold me-2" style="background-color: #E85D0C; padding: 10px 15px; border-radius: 10px;">Editar</a>
+			        <a href="javascript:void(0);" onclick="confirmarExclusaoLocal(${local.id_local});" class="mb-1 me-1 btn text-light fw-bold" style="background-color: #E85D0C; padding: 10px 15px; border-radius: 10px;">Excluir</a>
+			      </div>
+			      
+			    </div>
+			  </div>
+
+	          `;
+
+	          if (local.tipo === "lazer") {
+	            localLazerContainer.innerHTML += localHTML;
+	          } else if (local.tipo === "servico") {
+	            localServicoContainer.innerHTML += localHTML;
+	          } else if (local.tipo === "evento") {
+	            localEventoContainer.innerHTML += localHTML;
+	          }
+	        });
+	      }
+	    })
+	    .catch(error => console.error("Erro ao carregar locais:", error));
+	});
+
+
+	let localIdParaEditar;
+
+	document.getElementById('form-edit-local').addEventListener('submit', async function(event) {
+	  event.preventDefault();
+
+	  const nomeAtualizado = document.getElementById('editNomeLocal').value.trim();
+	  const descricaoAtualizada = document.getElementById('editDescricaoLocal').value.trim();
+	  const imagemAtualizada = document.getElementById('editImagemLocal').value.trim();
+	  const ruaAtualizada = document.getElementById('editRuaLocal').value.trim();
+	  const numeroAtualizado = document.getElementById('editNumeroLocal').value.trim();
+	  const bairroAtualizado = document.getElementById('editBairroLocal').value.trim();
+	  const cepAtualizado = document.getElementById('editCepLocal').value.trim();
+	  const idempresa = localStorage.getItem('usuarioId');
+
+	  const dadosAtualizados = {
+	    id_local: localIdParaEditar,
+	    id_empresa: parseInt(idempresa) || 0,  
+	    nome: nomeAtualizado,
+	    descricao: descricaoAtualizada,
+	    imagem_url: imagemAtualizada,
+	    rua: ruaAtualizada, 
+	    numero: numeroAtualizado, 
+	    bairro: bairroAtualizado,
+	    cep: cepAtualizado,
+	    tipo: localParaEdicao.tipo,
+	    nota_media: localParaEdicao.nota_media
+	  };
+
+	  try {
+	    const response = await fetch(`http://localhost:6789/local/${localIdParaEditar}`, {
+	      method: 'PUT',
+	      headers: {
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify(dadosAtualizados)
+	    });
+
+	    if (response.ok) {
+	      alert('Local atualizado com sucesso!');
+	      location.reload();
+	    } else {
+	      alert('Erro ao atualizar o local.');
+	    }
+	  } catch (error) {
+	    console.error('Erro:', error);
+	    alert('Erro ao atualizar o local.');
+	  }
+	});
+
+	function editarLocal(localId) {
+	  localIdParaEditar = localId;
+	  const local = locais.find(l => l.id_local === localId);
+
+	  if (!local) {
+	    alert("Local não encontrado!");
+	    return;
+	  }
+
+	  document.getElementById('editNomeLocal').value = local.nome;
+	  document.getElementById('editDescricaoLocal').value = local.descricao;
+	  document.getElementById('editImagemLocal').value = local.imagem_url;
+	  document.getElementById('editRuaLocal').value = local.rua;
+	  document.getElementById('editNumeroLocal').value = local.numero;
+	  document.getElementById('editBairroLocal').value = local.bairro;
+	  document.getElementById('editCepLocal').value = local.cep;
+	  
+	  localParaEdicao = {
+	    tipo: local.tipo,
+	    nota_media: local.nota_media
+	  };
+
+	  const myModal = new bootstrap.Modal(document.getElementById('editLocalModal'), {});
+	  myModal.show();
+	}
+
+</script>
+
+<script>
+	let localIdParaExcluir;
+
+	function confirmarExclusaoLocal(localId) {
+	  localIdParaExcluir = localId;
+	  
+	  var modalElement = document.getElementById('confirmDeleteModalLocal');
+	  console.log(modalElement);
+
+	  var myModal = new bootstrap.Modal(modalElement);
+	  myModal.show();
+	}
+
+	async function excluirLocalConfirmado() {
+	  try {
+	    const response = await fetch(`http://localhost:6789/local/${localIdParaExcluir}`, {
+	      method: 'DELETE'
+	    });
+
+	    alert('Local excluído com sucesso!');
+	    location.reload();
+	  } catch (error) {
+	    console.error('Erro ao excluir local:', error);
+	    alert('Erro ao tentar excluir o local.');
+	  }
+	}
+</script>
+
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           const usuarioId = localStorage.getItem('usuarioId');
+           if (usuarioId) {
+               document.getElementById('logarLink').style.display = 'none';
+               document.getElementById('inscreverLink').style.display = 'none';
+               document.getElementById('contaIcon').style.display = 'block';
+           } else {
+               document.getElementById('contaIcon').style.display = 'none';
+           }
+       });
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+html{
+  font-family:"Montserrat", sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#Pet, #Produtos, #Mapa {
+  width: 100%;
+}
+
+.main-container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.main-container {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#Pet, #Produtos, #Mapa {
+  width: 100%;
+  text-align: center;
+}
+
+.product-cont {
+  justify-content: center;
+}
+
+#cor{
+  background-color: #d6660a;
+}
+#corB{
+  background-color: #d6660a;
+  border: none;
+}
+#corB2{
+  background-color: #48067f;
+}
+#corB3{
+  background-color: #525151;
+}
+#corT{
+  color: #525151;
+}
+#corT2{
+  color: #d6660a; 
+}
+#corT3{
+  color: #48067f;
+}
+h6{
+  color: #d6660a; 
+}
+.productStyle{
+  border: 1px solid #CBCBCB !important;
+  border-radius: 30px;
+  width: 180px !important;
+}
+.container{
+  max-width: 100% !important;
+}
+.productStyle button{
+  background-color: #48067f;
+  margin-bottom: 13px;
+}
+.serviceStyle{
+  border: 1px solid #CBCBCB !important;
+  border-radius: 27px;
+  padding: 0;
+  width: 32% !important;
+}
+
+.serviceStyle button{
+  background-color: #48067f;
+  margin-bottom: 13px;
+}
+.product-cont{
+  gap: 12px;
+  margin-left: 40px;
+}
+
+.locationStyle{
+  border: 1px solid #CBCBCB !important;
+  border-radius: 27px;
+  padding: 0;
+  width: 32% !important;
+}
+
+.locationStyle button{
+  background-color: #48067f;
+  margin-bottom: 13px;
+}

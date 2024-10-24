@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPet</title>
+    <link rel="icon" href="../imagens/logoPet.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 2px solid #d6660a;
+        }
+        .header h1 {
+            color: #48067f;
+        }
+        .post {
+            border: 1px solid #d6660a;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #fff;
+        }
+        .post h2 {
+            margin: 0;
+            color: #48067f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        .post .description {
+            margin: 10px 0;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            color: #d6660a; /* Cor laranja para a estrela */
+        }
+        .star {
+            color: #d6660a; /* Cor laranja para a estrela */
+            margin-left: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #d6660a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #b55509;
+        }
+
+        .post-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.post-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+    min-height: 150px;
+    max-height: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.post-text {
+    flex: 1; /* Faz com que o texto ocupe o espaço restante */
+    padding-left: 10px; /* Adiciona espaço à esquerda do texto para maior separação */
+}
+
+.post h2 {
+    margin: 0;
+    color: #48067f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif; /* Fonte moderna */
+    font-weight: 600; /* Estilo de fonte mais pesado */
+}
+
+.description {
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif; /* Fonte moderna */
+    font-weight: 400; /* Peso normal */
+    color: #555; /* Cor mais suave para o texto */
+    line-height: 1.6; /* Aumenta a altura da linha para melhor legibilidade */
+}
+
+    </style>
+</head>
+<body>
+	<header class="container-fluid">
+	  <div class="d-flex flex-column flex-md-row align-items-center">
+	    <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+	    <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+	      <ul class="nav flex-column flex-md-row">
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+	        </li>
+	        <li class="nav-item">
+	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+	        </li>
+	      </ul>
+	      <ul class="nav flex-column flex-md-row">
+	        <li class="nav-item">
+	          <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+	        </li>
+	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+	          <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+	        </li>
+	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+	          <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+	        </li>
+	      </ul>
+	    </nav>
+	  </div>
+	  <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+	</header>
+
+
+<div class="container">
+    <div class="header">
+        <h1>Comentários</h1>
+		<a href="javascript:void(0);" id="fazerPostBtn" class="button">Fazer um Post</a>
+    </div>
+    <div id="posts-container">
+   
+     </div>
+  </div>
+  
+  <footer id="corB3" class="mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <h6 class="mb-2">iPet</h6>
+          <p class="text-light">iPet é uma plataforma que visa facilitar donos de pet a encontrarem lugar ideal para seu amigo de 4 patas.</p>
+        </div>
+        <div class="col-md">
+          <h6 class="mb-2">Serviços</h6>
+          <p class="text-light">Restaurantes<br>Lojas<br>Shoppings</p>
+        </div>
+        <div class="col-md">
+          <h6 class="mb-2">Empresa</h6>
+          <p class="text-light">Quem Somos<br>Nossa Equipe<br>Contato</p>
+        </div>
+        <div class="col-md" style="flex: 3;">
+          <h6 class="mb-6">Receba Notícias</h6>
+          <form id="meuFormulario" action="#" method="post" class="d-flex">
+            <input style="height: 40px;" type="email" id="email" class="form-control me-1" placeholder="Seu e-mail" aria-label="Seu e-mail" aria-describedby="button-addon2" required>
+            <button style="margin: 0 !important; font-size: 11px !important; width: 30%;" id="corB" class="btn ms-1 mt-3 me-0 text-light rounded-2 fs-6 fw-bold" type="submit">Se Inscrever</button>
+          </form>
+          <div style="display: flex; justify-content: end;">
+            <a style="text-decoration: none;" href="https://www.instagram.com/ipetoficialbh/" target="_blank">
+              <img style="height: 50px; margin-top: 10px;" src="../../imagens/instagram.png" alt="Instagram">
+            </a>
+            <a style="text-decoration: none;" href="https://www.x.com/ipetoficial/" target="_blank">
+              <img style="height: 50px; margin-top: 10px;" src="../../imagens/twitter.png" alt="Twitter">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="border-top: 2px solid white; width: 100%; margin-top: 0px;">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="color: white">
+      <p class="mb-0 me-md-5">Copyright iPet</p>
+      <div class="d-flex align-items-center">
+        <img src="../../imagens/logoPet.png" width="100px" height="80px" alt="Logo">
+      </div>
+    </div>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Requisição para buscar todos os posts
+  fetch('http://localhost:6789/posts', { method: 'GET' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar os posts');
+      }
+      return response.json();
+    })
+    .then(postsResponse => {
+      const localId = localStorage.getItem('localId'); 
+      const postsContainer = document.getElementById('posts-container');
+      postsContainer.innerHTML = ''; 
+
+      if (!localId) {
+        postsContainer.innerHTML = '<p>Nenhum local foi selecionado.</p>';
+        return;
+      }
+
+      const postsFiltrados = postsResponse.filter(post => post.id_local == localId);
+
+      if (postsFiltrados.length === 0) {
+        postsContainer.innerHTML = '<p>Nenhum post encontrado para este local.</p>';
+      } else {
+        postsFiltrados.forEach(post => {
+          const postHTML = `
+            <div class="post">
+              <div class="post-content">
+                <img src="${post.imagem}" alt="Imagem do post" class="post-image">
+                <div class="post-text">
+                  <h2>${post.id_usuario.nome}<span class="rating">&#9733; ${post.nota} / 5</span></h2>
+                  <div class="description">${post.conteudo}</div>
+                </div>
+              </div>
+            </div>
+          `;
+          postsContainer.innerHTML += postHTML; 
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+});
+</script>
+<script>
+	document.getElementById("fazerPostBtn").addEventListener("click", function() {
+	  const localId = localStorage.getItem('localId');
+	  if (localId) {
+	    window.location.href = `../posts/create-post.html?id_local=${localId}`;
+	  } else {
+	    alert('Erro: Nenhum local selecionado.');
+	  }
+	});
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const usuarioId = localStorage.getItem('usuarioId');
+        if (usuarioId) {
+            document.getElementById('logarLink').style.display = 'none';
+            document.getElementById('inscreverLink').style.display = 'none';
+            document.getElementById('contaIcon').style.display = 'block';
+        } else {
+            document.getElementById('contaIcon').style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+CREATE TABLE Usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    nome VARCHAR(30) UNIQUE NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    senha VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Post (
+    id_post SERIAL PRIMARY KEY,
+    conteudo VARCHAR(1000) NOT NULL,
+    data VARCHAR(10) NOT NULL,
+    imagem VARCHAR(255),
+    id_usuario INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
+    id_local INT NOT NULL,
+    FOREIGN KEY (id_local) REFERENCES Local(id_local)
+);
+
+CREATE TABLE Avaliacao (
+    id_avaliacao SERIAL PRIMARY KEY,
+    nota INT CHECK (nota >= 0 AND nota <= 5) NOT NULL,
+    id_post INT NOT NULL,
+    FOREIGN KEY (id_post) REFERENCES Post(id_post),
+    FOREIGN KEY (id_local) REFERENCES Local(id_local)
+);
+
+CREATE TABLE Empresa (
+    id_empresa SERIAL PRIMARY KEY,
+    nome VARCHAR(30) UNIQUE NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    senha VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Local (
+    id_local SERIAL PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    descricao VARCHAR(1000) NOT NULL,
+    tipo VARCHAR(10),
+    imagem_url VARCHAR(255),
+    nota_media FLOAT CHECK (nota_media >= 0 AND nota_media <= 5),
+    rua VARCHAR(50),
+    numero VARCHAR(5),
+    bairro VARCHAR(20),
+    cep CHAR(8),
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa)
+);
+
+CREATE TABLE Produto (
+    id_produto SERIAL PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    descricao VARCHAR(200),
+    imagem VARCHAR(255),
+    preco DECIMAL(10, 2),
+    link_site VARCHAR(255),
+    nota_media FLOAT CHECK (nota_media >= 0 AND nota_media <= 5),
+    id_empresa INT NOT NULL,
+    FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa)
+);
+
+ALTER TABLE Post
+ADD CONSTRAINT FK_usuario_post FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
+ADD CONSTRAINT FK_local_post FOREIGN KEY (id)local REFERENCES Local(id_local);
+
+ALTER TABLE Local
+ADD CONSTRAINT FK_empresa_local FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa);
+
+ALTER TABLE Produto
+ADD CONSTRAINT FK_empresa_produto FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa);
+
+ALTER TABLE Avaliacao
+ADD CONSTRAINT FK_post_avaliacao FOREIGN KEY (id_post) REFERENCES Post(id_post),
+ADD CONSTRAINT FK_local_avaliacao FOREIGN KEY (id_local) REFERENCES Local(id_local);
