@@ -48,15 +48,16 @@ public class PostDAO {
     public boolean inserirPost(Post post) {
         boolean status = false;
         try {  
-            String sql = "INSERT INTO Post (conteudo, data, imagem, id_usuario, id_local) "
-                       + "VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Post (conteudo, data, imagem, id_usuario, id_local, nota, nome) "
+                       + "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = conexao.prepareStatement(sql);
             pst.setString(1, post.getConteudo());
             pst.setString(2, post.getData());
             pst.setString(3, post.getImagem());
             pst.setInt(4, post.getId_usuario());
             pst.setInt(5, post.getId_local());
-
+            pst.setDouble(6, post.getNota());
+            pst.setString(7, post.getNome());
             pst.executeUpdate();
             pst.close();
             status = true;
@@ -68,8 +69,8 @@ public class PostDAO {
 
     public boolean atualizarPost(Post post) {
         boolean status = false;
-        try {  
-            String sql = "UPDATE Post SET conteudo = ?, data = ?, imagem = ?, id_usuario = ?, id_local = ? "
+        try {
+            String sql = "UPDATE Post SET conteudo = ?, data = ?, imagem = ?, id_usuario = ?, id_local = ?, nota = ?, nome = ? "
                        + "WHERE id_post = ?";
             PreparedStatement pst = conexao.prepareStatement(sql);
             pst.setString(1, post.getConteudo());
@@ -77,12 +78,14 @@ public class PostDAO {
             pst.setString(3, post.getImagem());
             pst.setInt(4, post.getId_usuario());
             pst.setInt(5, post.getId_local());
-            pst.setInt(6, post.getId_post());
+            pst.setDouble(6, post.getNota());
+            pst.setString(7, post.getNome());
+            pst.setInt(8, post.getId_post());
 
             pst.executeUpdate();
             pst.close();
             status = true;
-        } catch (SQLException u) {  
+        } catch (SQLException u) {
             throw new RuntimeException(u);
         }
         return status;
@@ -90,12 +93,12 @@ public class PostDAO {
 
     public boolean excluirPost(int id_post) {
         boolean status = false;
-        try {  
+        try {
             Statement st = conexao.createStatement();
             st.executeUpdate("DELETE FROM Post WHERE id_post = " + id_post);
             st.close();
             status = true;
-        } catch (SQLException u) {  
+        } catch (SQLException u) {
             throw new RuntimeException(u);
         }
         return status;
@@ -109,8 +112,16 @@ public class PostDAO {
             pst.setInt(1, id_post);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                post = new Post(rs.getInt("id_post"), rs.getString("conteudo"), rs.getString("data"),  // Alterado para getString
-                                rs.getString("imagem"), rs.getInt("id_usuario"), rs.getInt("id_local"));
+                post = new Post(
+                    rs.getInt("id_post"),
+                    rs.getString("nome"), // Inclui o campo nome
+                    rs.getString("conteudo"),
+                    rs.getString("data"),
+                    rs.getString("imagem"),
+                    rs.getInt("id_usuario"),
+                    rs.getInt("id_local"),
+                    rs.getDouble("nota")
+                );
             }
             pst.close();
         } catch (SQLException e) {
@@ -121,18 +132,26 @@ public class PostDAO {
 
     public Post[] getPosts() {
         Post[] posts = null;
-        
+
         try {
             Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = st.executeQuery("SELECT * FROM Post");        
-            if(rs.next()){
+            ResultSet rs = st.executeQuery("SELECT * FROM Post");
+            if (rs.next()) {
                 rs.last();
                 posts = new Post[rs.getRow()];
                 rs.beforeFirst();
 
-                for(int i = 0; rs.next(); i++) {
-                    posts[i] = new Post(rs.getInt("id_post"), rs.getString("conteudo"), rs.getString("data"),  // Alterado para getString
-                                        rs.getString("imagem"), rs.getInt("id_usuario"), rs.getInt("id_local"));
+                for (int i = 0; rs.next(); i++) {
+                    posts[i] = new Post(
+                        rs.getInt("id_post"),
+                        rs.getString("nome"), // Inclui o campo nome
+                        rs.getString("conteudo"),
+                        rs.getString("data"),
+                        rs.getString("imagem"),
+                        rs.getInt("id_usuario"),
+                        rs.getInt("id_local"),
+                        rs.getDouble("nota")
+                    );
                 }
             }
             st.close();
@@ -142,3 +161,4 @@ public class PostDAO {
         return posts;
     }
 }
+

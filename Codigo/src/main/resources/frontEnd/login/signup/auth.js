@@ -38,51 +38,41 @@ async function cadastrarUsuario(event) {
 
 async function login(event) {
     event.preventDefault();
+
     const emailUsuario = document.getElementById('emailLogin').value;
     const senhaLogin = document.getElementById('senhaLogin').value;
     const tipoCadastro = document.querySelector('input[name="tipoCadastro"]:checked').value;
 
-    const url = tipoCadastro === 'empresa' ? '/empresas' : '/usuarios';
+    const url = tipoCadastro === 'empresa' ? '/empresa/login' : '/usuario/login';
+
+    const data = {
+        email: emailUsuario,
+        senha: senhaLogin
+    };
 
     try {
         const response = await fetch(`http://localhost:6789${url}`, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(data)
         });
 
-        if (!response.ok) {
-            throw new Error('Erro na resposta da API');
-        }
+        const dados = await response.json(); 
 
-        const dados = await response.json();
-        console.log(dados);
-
-        let usuarioEncontrado;
-
-        if (tipoCadastro === 'empresa') {
-            usuarioEncontrado = dados.find(empresa => 
-                empresa.email === emailUsuario && 
-                empresa.senha === senhaLogin
-            );
-        } else {
-            usuarioEncontrado = dados.find(usuario => 
-                usuario.email === emailUsuario && 
-                usuario.senha === senhaLogin
-            );
-        }
-
-        if (usuarioEncontrado) {
-            localStorage.setItem('usuarioId', tipoCadastro === 'empresa' ? usuarioEncontrado.id_empresa : usuarioEncontrado.id_usuario);
+        if (response.ok && dados.sucesso) {
+            localStorage.setItem('usuarioId', dados.id);
             localStorage.setItem('tipoCadastro', tipoCadastro);
+
             alert('Login realizado com sucesso!');
             window.location.href = 'perfil.html';
         } else {
-            alert('Usuário ou senha inválidos!');
+            alert(dados.mensagem || 'Erro ao realizar o login.');
         }
     } catch (error) {
         console.error('Erro:', error);
         alert('Erro ao realizar o login.');
     }
 }
+

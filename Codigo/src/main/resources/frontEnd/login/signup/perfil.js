@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (tipoCadastro === 'empresa') {
                 document.getElementById('painelButton').style.display = 'block';
+            } else if(tipoCadastro === 'usuario'){
+                document.getElementById('usuarioButton').style.display = 'block';
             }
         } else {
             alert('Erro ao carregar os dados do usuário.');
@@ -79,4 +81,8 @@ function logout() {
 
 function irParaPainel() {
     window.location.href = '../../admin/admin.html';
+}
+
+function irParaUsuario() {
+    window.location.href = '../../admin/usuario.html';
 }

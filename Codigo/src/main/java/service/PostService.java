@@ -48,6 +48,14 @@ public class PostService {
             response.status(400);
             return gson.toJson("Erro: Campo 'id_local' está faltando.");
         }
+        if (!dados.has("nota") || dados.get("nota").isJsonNull()) {
+            response.status(400);
+            return gson.toJson("Erro: Campo 'nota' está faltando.");
+        }
+        if (!dados.has("nome") || dados.get("nome").isJsonNull()) {
+            response.status(400);
+            return gson.toJson("Erro: Campo 'nome' está faltando.");
+        }
 
         try {
             String conteudo = dados.get("conteudo").getAsString();
@@ -55,8 +63,10 @@ public class PostService {
             String imagem = dados.get("imagem").getAsString();
             int id_usuario = dados.get("id_usuario").getAsInt();
             int id_local = dados.get("id_local").getAsInt();
+            double nota = dados.get("nota").getAsDouble();
+            String nome = dados.get("nome").getAsString();
 
-            Post post = new Post(-1, conteudo, dataString, imagem, id_usuario, id_local);
+            Post post = new Post(-1, nome, conteudo, dataString, imagem, id_usuario, id_local, nota);
             postDAO.inserirPost(post);
 
             response.status(201); // HTTP 201 Created
@@ -67,9 +77,6 @@ public class PostService {
             return gson.toJson("Erro ao inserir o post: " + e.getMessage());
         }
     }
-
-
-
 
     public Object get(Request request, Response response) {
         int id_post = Integer.parseInt(request.params(":id"));
@@ -93,16 +100,20 @@ public class PostService {
 
         if (postExistente != null) {
             String conteudo = data.has("conteudo") ? data.get("conteudo").getAsString().trim() : postExistente.getConteudo();
-            String dataString = data.has("data") ? data.get("data").getAsString().trim() : postExistente.getData(); // Mantido como String
+            String dataString = data.has("data") ? data.get("data").getAsString().trim() : postExistente.getData();
             String imagem = data.has("imagem") ? data.get("imagem").getAsString().trim() : postExistente.getImagem();
             int id_usuario = data.has("id_usuario") ? data.get("id_usuario").getAsInt() : postExistente.getId_usuario();
             int id_local = data.has("id_local") ? data.get("id_local").getAsInt() : postExistente.getId_local();
+            double nota = data.has("nota") ? data.get("nota").getAsDouble() : postExistente.getNota();
+            String nome = data.has("nome") ? data.get("nome").getAsString().trim() : postExistente.getNome(); // Atualização de nome
 
             postExistente.setConteudo(conteudo);
             postExistente.setData(dataString);
             postExistente.setImagem(imagem);
             postExistente.setId_usuario(id_usuario);
             postExistente.setId_local(id_local);
+            postExistente.setNota(nota);
+            postExistente.setNome(nome); // Atualiza o campo nome
 
             postDAO.atualizarPost(postExistente);
 
@@ -138,4 +149,3 @@ public class PostService {
         return gson.toJson(posts);
     }
 }
-

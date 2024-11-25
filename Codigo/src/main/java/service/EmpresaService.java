@@ -110,5 +110,27 @@ public class EmpresaService {
         }
     }
 
+    public Object login(Request request, Response response) {
+        JsonObject data = gson.fromJson(request.body(), JsonObject.class);
 
+        String email = data.get("email").getAsString();
+        String senha = data.get("senha").getAsString();
+
+        Empresa empresa = empresaDAO.verificarLogin(email, senha);
+
+        JsonObject resposta = new JsonObject();
+
+        if (empresa != null) {
+            resposta.addProperty("sucesso", true);
+            resposta.addProperty("mensagem", "Login realizado com sucesso!");
+            resposta.addProperty("id", empresa.getId_empresa());
+            response.status(200);
+        } else {
+            resposta.addProperty("sucesso", false);
+            resposta.addProperty("mensagem", "Email ou senha inválidos.");
+            response.status(401);
+        }
+
+        return resposta.toString();
+    }
 }

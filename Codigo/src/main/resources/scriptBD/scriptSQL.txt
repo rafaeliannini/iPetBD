@@ -2,7 +2,7 @@ CREATE TABLE Usuario (
     id_usuario SERIAL PRIMARY KEY,
     nome VARCHAR(30) UNIQUE NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
-    senha VARCHAR(30) NOT NULL
+    senha VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE Post (
@@ -10,17 +10,11 @@ CREATE TABLE Post (
     conteudo VARCHAR(1000) NOT NULL,
     data VARCHAR(10) NOT NULL,
     imagem VARCHAR(255),
+    nome VARCHAR(30) NOT NULL,
+    nota FLOAT NOT NULL,
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
     id_local INT NOT NULL,
-    FOREIGN KEY (id_local) REFERENCES Local(id_local)
-);
-
-CREATE TABLE Avaliacao (
-    id_avaliacao SERIAL PRIMARY KEY,
-    nota INT CHECK (nota >= 0 AND nota <= 5) NOT NULL,
-    id_post INT NOT NULL,
-    FOREIGN KEY (id_post) REFERENCES Post(id_post),
     FOREIGN KEY (id_local) REFERENCES Local(id_local)
 );
 
@@ -28,7 +22,7 @@ CREATE TABLE Empresa (
     id_empresa SERIAL PRIMARY KEY,
     nome VARCHAR(30) UNIQUE NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
-    senha VARCHAR(30) NOT NULL
+    senha VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE Local (
@@ -67,7 +61,3 @@ ADD CONSTRAINT FK_empresa_local FOREIGN KEY (id_empresa) REFERENCES Empresa(id_e
 
 ALTER TABLE Produto
 ADD CONSTRAINT FK_empresa_produto FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa);
-
-ALTER TABLE Avaliacao
-ADD CONSTRAINT FK_post_avaliacao FOREIGN KEY (id_post) REFERENCES Post(id_post),
-ADD CONSTRAINT FK_local_avaliacao FOREIGN KEY (id_local) REFERENCES Local(id_local);

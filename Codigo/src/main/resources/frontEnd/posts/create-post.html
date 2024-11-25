@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPet - Criar Post</title>
-    <link rel="icon" href="../imagens/logoPet.png" type="image/x-icon">
+    <link rel="icon" href="../../imagens/logoPet.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,53 +59,58 @@
 </head>
 <body>
     <header class="container-fluid">
-      <div class="d-flex flex-column flex-md-row align-items-center">
-        <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
-        <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
-          <ul class="nav flex-column flex-md-row">
-            <li class="nav-item">
-              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
-            </li>
-            <li class="nav-item">
-              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
-            </li>
-            <li class="nav-item">
-              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
-            </li>
-            <li class="nav-item">
-              <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
-            </li>
-          </ul>
-          <ul class="nav flex-column flex-md-row">
-            <li class="nav-item">
-              <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
-            </li>
-            <li class="nav-item mt-2 mt-md-0 ms-md-2">
-              <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
-            </li>
-            <li class="nav-item mt-2 mt-md-0 ms-md-2">
-              <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
-    </header>
+        <div class="d-flex flex-column flex-md-row align-items-center">
+          <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+          <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+            <ul class="nav flex-column flex-md-row">
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../IA/avaliacaoIA.html">Avaliação de Local</a>
+              </li>
+            </ul>
+            <ul class="nav flex-column flex-md-row">
+              <li class="nav-item">
+                <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+              </li>
+              <li class="nav-item mt-2 mt-md-0 ms-md-2">
+                <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+              </li>
+              <li class="nav-item mt-2 mt-md-0 ms-md-2">
+                <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+      </header>
 
     <div class="container">
         <h1>Criar Post</h1>
-        <form id="post-form"> <!-- Removido action e method -->
+        <form id="post-form">
             <div class="form-group">
                 <label for="conteudo">Conteúdo do Post:</label>
-                <textarea id="conteudo" name="conteudo" required></textarea><br>
+                <textarea id="conteudo" name="conteudo" required></textarea>
             </div>
-
             <div class="form-group">
                 <label for="imagem">URL da Imagem (opcional):</label>
-                <input type="url" id="imagem" name="imagem"><br>
+                <input type="url" id="imagem" name="imagem">
             </div>
-
-            <input type="submit" value="Enviar Post" class="button"> <!-- Adicionando a classe button -->
+            <div class="form-group">
+                <label for="nota">Nota (0-5):</label>
+                <input type="number" id="nota" name="nota" step="0.1" min="0" max="5" required>
+            </div>
+            <input type="submit" value="Enviar Post" class="button">
         </form>
     </div>
 
@@ -124,63 +129,114 @@
             </div>
         </div>
     </div>
-
+    <footer id="corB3" class="mt-5 p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md">
+              <h6 class="mb-2">iPet</h6>
+              <p class="text-light">iPet é uma plataforma que visa facilitar donos de pet a encontrarem lugar ideal para seu amigo de 4 patas.</p>
+            </div>
+            <div class="col-md">
+              <h6 class="mb-2">Serviços</h6>
+              <p class="text-light">Restaurantes<br>Lojas<br>Shoppings</p>
+            </div>
+            <div class="col-md">
+              <h6 class="mb-2">Empresa</h6>
+              <p class="text-light">Quem Somos<br>Nossa Equipe<br>Contato</p>
+            </div>
+            <div class="col-md" style="flex: 3;">
+              <h6 class="mb-6">Receba Notícias</h6>
+              <form id="meuFormulario" action="#" method="post" class="d-flex">
+                <input style="height: 40px;" type="email" id="email" class="form-control me-1" placeholder="Seu e-mail" aria-label="Seu e-mail" aria-describedby="button-addon2" required>
+                <button style="margin: 0 !important; font-size: 11px !important; width: 30%;" id="corB" class="btn ms-1 mt-3 me-0 text-light rounded-2 fs-6 fw-bold" type="submit">Se Inscrever</button>
+              </form>
+              <div style="display: flex; justify-content: end;">
+                <a style="text-decoration: none;" href="https://www.instagram.com/ipetoficialbh/" target="_blank">
+                  <img style="height: 50px; margin-top: 10px;" src="../../imagens/instagram.png" alt="Instagram">
+                </a>
+                <a style="text-decoration: none;" href="https://www.x.com/ipetoficial/" target="_blank">
+                  <img style="height: 50px; margin-top: 10px;" src="../../imagens/twitter.png" alt="Twitter">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr style="border-top: 2px solid white; width: 100%; margin-top: 0px;">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="color: white">
+          <p class="mb-0 me-md-5">Copyright iPet</p>
+          <div class="d-flex align-items-center">
+            <img src="../../imagens/logoPet.png" width="100px" height="80px" alt="Logo">
+          </div>
+        </div>
+      </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
+    <script>
         async function submitPostForm(event) {
-            event.preventDefault(); 
-            const form = event.target;
+        event.preventDefault();
+        const form = event.target;
 
-            const conteudo = form.querySelector('textarea[name="conteudo"]').value;
-            const imagem = form.querySelector('input[name="imagem"]').value || "imagem_inexistente"; 
-            const dateObj = new Date();
-            const day = String(dateObj.getDate()).padStart(2, '0');
-            const month = String(dateObj.getMonth() + 1).padStart(2, '0'); 
-            const year = dateObj.getFullYear();
-            const data = `${day}/${month}/${year}`; // Formatando a data
+        const conteudo = form.querySelector('#conteudo').value.trim();
+        const imagem = form.querySelector('#imagem').value.trim() || "imagem_inexistente";
+        const nota = parseFloat(form.querySelector('#nota').value);
+        const data = new Date().toISOString().split('T')[0];
 
-            const id_usuario = localStorage.getItem('usuarioId');  // Pegando id do usuário armazenado no localStorage
-            const urlParams = new URLSearchParams(window.location.search);
-            const id_local = urlParams.get('id_local');  // Pegando id do local da URL
+        const id_usuario = localStorage.getItem('usuarioId');
+        const urlParams = new URLSearchParams(window.location.search);
+        const id_local = urlParams.get('id_local');
 
-            if (!id_usuario || !id_local) {
-                alert('Erro: Usuário ou local não identificados.');
-                return;
+        if (!id_usuario || !id_local) {
+            alert('Erro: Usuário ou local não identificados.');
+            return;
+        }
+
+        try {
+            // Obter o nome do usuário pelo ID
+            const userResponse = await fetch(`http://localhost:6789/usuario/${id_usuario}`, {
+                method: 'GET'
+            });
+
+            if (!userResponse.ok) {
+                throw new Error("Erro ao obter o nome do usuário.");
             }
 
-            // Criando o objeto para ser enviado
+            const userData = await userResponse.json();
+            const nome = userData.nome; // Certifique-se de que o objeto retornado contém o atributo `nome`
+
+            // Montar os dados do post
             const postData = {
                 conteudo,
                 imagem,
                 data,
+                nota,
+                nome,
                 id_usuario: parseInt(id_usuario, 10),
                 id_local: parseInt(id_local, 10)
             };
 
-            try {
-                const response = await fetch('http://localhost:6789/produto', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(postData)
-                });
+            // Enviar o post
+            const response = await fetch('http://localhost:6789/post', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(postData)
+            });
 
-                // Modal de sucesso
-                var postSuccessModal = new bootstrap.Modal(document.getElementById('postSuccessModal'));
+            if (response.ok) {
+                const postSuccessModal = new bootstrap.Modal(document.getElementById('postSuccessModal'));
                 postSuccessModal.show();
-                form.reset(); // Reseta o formulário após envio
-
-            } catch (error) {
-                console.error('Erro:', error);
-                alert('Ocorreu um erro ao tentar enviar o post.');
+                form.reset();
+            } else {
+                const errorMsg = await response.json();
+                alert(`Erro ao enviar o post: ${errorMsg}`);
             }
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao enviar o post.');
         }
+    }
 
-        window.onload = function() {
-            var form = document.getElementById('post-form');
-            form.addEventListener('submit', submitPostForm);
-        }
+    document.getElementById('post-form').addEventListener('submit', submitPostForm);
+
+
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -194,6 +250,5 @@
             }
         });
     </script>
-
 </body>
 </html>

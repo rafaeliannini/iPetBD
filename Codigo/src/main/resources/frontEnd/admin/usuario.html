@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPet</title>
+  <link rel="icon" href="../../imagens/logoPet.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d6660a;
+    }
+
+    #admin-content {
+      padding: 20px;
+    }
+
+    .card {
+      margin: 20px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      color: #d6660a;
+      font-size: 1.5rem;
+    }
+
+    .card button {
+      background-color: #d6660a;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #a85307;
+    }
+
+    .admin-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .admin-actions a {
+      text-align: center;
+      background-color: #d6660a;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .admin-actions a:hover {
+      background-color: #a85307;
+    }
+    .nav-link {
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.card {
+    margin: 20px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 22rem;
+    height: 28rem;
+}
+
+.product-cont .col {
+    flex: 1 1 22%;
+}
+
+.local-cont .col {
+    flex: 1 1 22%; 
+}
+
+h3 {
+    text-align: center; 
+    color: #d6660a;
+}
+  </style>
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div class="d-flex flex-column flex-md-row align-items-center">
+          <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+          <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+            <ul class="nav flex-column flex-md-row">
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+              </li>
+              <li class="nav-item">
+                <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../IA/avaliacaoIA.html">Avaliação de Local</a>
+              </li>
+            </ul>
+            <ul class="nav flex-column flex-md-row">
+              <li class="nav-item">
+                <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+              </li>
+              <li class="nav-item mt-2 mt-md-0 ms-md-2">
+                <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+              </li>
+              <li class="nav-item mt-2 mt-md-0 ms-md-2">
+                <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+      </header>
+
+    <div id="admin-content" class="container">
+        <h1>Painel para administrar seus Posts</h1>
+    
+        <h2>Seus Posts</h2>
+        <div id="lista-posts" class="d-flex flex-wrap justify-content-center">
+          <section id="Posts" class="container-fluid">
+            <div class="container mt-3" style="display: flex; justify-content: center;">
+              <div class="post-cont row row-cols-1 row-cols-md-4 g-4" style="display: flex; justify-content: center; align-items: center;">
+                <!-- Posts serão carregados aqui dinamicamente -->
+              </div>
+            </div>
+          </section>
+        </div>
+    
+<!-- Modal para editar post -->
+<div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editPostModalLabel">Editar Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-edit">
+            <div class="mb-3">
+              <label for="editNome" class="form-label">Nome</label>
+              <input type="text" id="editNome" class="form-control" name="nome" required>
+            </div>
+            <div class="mb-3">
+              <label for="editConteudo" class="form-label">Conteúdo</label>
+              <textarea id="editConteudo" class="form-control" name="conteudo" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="editImagem" class="form-label">Imagem URL</label>
+              <input type="text" id="editImagem" class="form-control" name="imagem" required>
+            </div>
+            <div class="mb-3">
+              <label for="editNota" class="form-label">Nota</label>
+              <input type="number" step="0.1" id="editNota" class="form-control" name="nota" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+        <!-- Modal para confirmar exclusão -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Tem certeza de que deseja excluir este post?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger" onclick="excluirPostConfirmado()">Sim, excluir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<footer id="corB3" class="mt-5 p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <h6 class="mb-2">iPet</h6>
+        <p class="text-light">iPet é uma plataforma que visa facilitar donos de pet a encontrarem lugar ideal para seu amigo de 4 patas.</p>
+      </div>
+      <div class="col-md">
+        <h6 class="mb-2">Serviços</h6>
+        <p class="text-light">Restaurantes<br>Lojas<br>Shoppings</p>
+      </div>
+      <div class="col-md">
+        <h6 class="mb-2">Empresa</h6>
+        <p class="text-light">Quem Somos<br>Nossa Equipe<br>Contato</p>
+      </div>
+      <div class="col-md" style="flex: 3;">
+        <h6 class="mb-6">Receba Notícias</h6>
+        <form id="meuFormulario" action="#" method="post" class="d-flex">
+          <input style="height: 40px;" type="email" id="email" class="form-control me-1" placeholder="Seu e-mail" aria-label="Seu e-mail" aria-describedby="button-addon2" required>
+          <button style="margin: 0 !important; font-size: 11px !important; width: 30%;" id="corB" class="btn ms-1 mt-3 me-0 text-light rounded-2 fs-6 fw-bold" type="submit">Se Inscrever</button>
+        </form>
+        <div style="display: flex; justify-content: end;">
+          <a style="text-decoration: none;" href="https://www.instagram.com/ipetoficialbh/" target="_blank">
+            <img style="height: 50px; margin-top: 10px;" src="../../imagens/instagram.png" alt="Instagram">
+          </a>
+          <a style="text-decoration: none;" href="https://www.x.com/ipetoficial/" target="_blank">
+            <img style="height: 50px; margin-top: 10px;" src="../../imagens/twitter.png" alt="Twitter">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr style="border-top: 2px solid white; width: 100%; margin-top: 0px;">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center" style="color: white">
+    <p class="mb-0 me-md-5">Copyright iPet</p>
+    <div class="d-flex align-items-center">
+      <img src="../../imagens/logoPet.png" width="100px" height="80px" alt="Logo">
+    </div>
+  </div>
+</footer>
+<script>
+    let posts = [];
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const usuarioId = localStorage.getItem('usuarioId');
+
+      if (!usuarioId) {
+        alert('Você precisa estar logado para acessar os posts.');
+        window.location.href = 'loginForm.html';
+        return;
+      }
+
+      fetch("http://localhost:6789/posts", { method: "GET" })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro na resposta da API');
+          }
+          return response.json();
+        })
+        .then(postsResponse => {
+          posts = postsResponse;
+          const postContainer = document.querySelector('.post-cont');
+          postContainer.innerHTML = "";
+
+          const postsFiltrados = posts.filter(post => post.id_usuario == usuarioId);
+
+          if (postsFiltrados.length === 0) {
+            postContainer.innerHTML = "<p>Nenhum post encontrado.</p>";
+          } else {
+            const promises = postsFiltrados.map(post => {
+          return fetch(`http://localhost:6789/local/${post.id_local}`, { method: "GET" })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`Erro ao buscar local para o post ${post.id_post}`);
+              }
+              return response.json();
+            })
+            .then(local => {
+              post.localNome = local.nome; // Adiciona o nome do local ao objeto do post
+              return post;
+            })
+            .catch(error => {
+              console.error(`Erro ao buscar local para o post ${post.id_post}:`, error);
+              post.localNome = "Local não encontrado"; // Valor padrão em caso de erro
+              return post;
+            });
+        });
+
+        Promise.all(promises)
+          .then(postsComLocais => {
+            postsComLocais.forEach(post => {
+              const postHTML = `
+                <div class="card-body text-center">
+                  <div><img src="${post.imagem}" class="img-fluid"></div>
+                  <h5 class="mt-2" style="font-weight: 800; color: #E85D0C;">${post.nome}</h5>
+                  <p>${post.conteudo}</p>
+                  <p><strong>Local:</strong> ${post.localNome}</p>
+                  <span class="rating">&#9733; ${post.nota} / 5</span>
+                  <div class="mt-3 d-flex justify-content-center">
+                    <a href="javascript:void(0);" onclick="editarPost(${post.id_post});" class="btn text-light fw-bold me-2" style="background-color: #E85D0C;">Editar</a>
+                    <a href="javascript:void(0);" onclick="confirmarExclusao(${post.id_post});" class="btn text-light fw-bold" style="background-color: #E85D0C;">Excluir</a>
+                  </div>
+                </div>`;
+              postContainer.innerHTML += postHTML;
+            });
+          })
+          .catch(error => console.error("Erro ao carregar locais para posts:", error));
+      }
+    })
+    .catch(error => console.error("Erro ao carregar posts:", error));
+});
+
+    let postIdParaEditar;
+
+document.getElementById('form-edit').addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  const nomeAtualizado = document.getElementById('editNome').value.trim();
+  const conteudoAtualizado = document.getElementById('editConteudo').value.trim();
+  const imagemAtualizada = document.getElementById('editImagem').value.trim();
+  const notaAtualizada = parseFloat(document.getElementById('editNota').value.trim()) || 0;
+
+  const dadosAtualizados = {
+    nome: nomeAtualizado,
+    conteudo: conteudoAtualizado,
+    imagem: imagemAtualizada,
+    nota: notaAtualizada,
+  };
+
+  try {
+    const response = await fetch(`http://localhost:6789/post/${postIdParaEditar}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dadosAtualizados),
+    });
+
+    if (response.ok) {
+      alert('Post atualizado com sucesso!');
+      location.reload();
+    } else {
+      alert('Erro ao atualizar o post. Verifique os dados e tente novamente.');
+    }
+  } catch (error) {
+    console.error('Erro ao atualizar o post:', error);
+    alert('Erro ao atualizar o post. Tente novamente mais tarde.');
+  }
+});
+
+function editarPost(postId) {
+  postIdParaEditar = postId; 
+
+  const post = posts.find((p) => p.id_post === postId); 
+
+  if (!post) {
+    alert('Post não encontrado!');
+    return;
+  }
+
+  document.getElementById('editNome').value = post.nome;
+  document.getElementById('editConteudo').value = post.conteudo;
+  document.getElementById('editImagem').value = post.imagem;
+  document.getElementById('editNota').value = post.nota;
+
+  const modalEditar = new bootstrap.Modal(document.getElementById('editPostModal'));
+  modalEditar.show();
+}
+
+
+let postIdParaExcluir;
+
+function confirmarExclusao(postId) {
+  postIdParaExcluir = postId;
+  const myModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+  myModal.show();
+}
+
+async function excluirPostConfirmado() {
+  try {
+    const response = await fetch(`http://localhost:6789/post/${postIdParaExcluir}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      alert('Post excluído com sucesso!');
+      location.reload();
+    } else {
+      alert('Erro ao tentar excluir o post.');
+    }
+  } catch (error) {
+    console.error('Erro ao excluir post:', error);
+    alert('Erro ao tentar excluir o post.');
+  }
+}
+  </script>
+
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           const usuarioId = localStorage.getItem('usuarioId');
+           if (usuarioId) {
+               document.getElementById('logarLink').style.display = 'none';
+               document.getElementById('inscreverLink').style.display = 'none';
+               document.getElementById('contaIcon').style.display = 'block';
+           } else {
+               document.getElementById('contaIcon').style.display = 'none';
+           }
+       });
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

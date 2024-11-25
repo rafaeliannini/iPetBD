@@ -76,7 +76,7 @@
       const numero = form.querySelector('input[name="numero"]').value;
       const bairro = form.querySelector('input[name="bairro"]').value;
       const cep = form.querySelector('input[name="cep"]').value;
-      const nota_media = form.querySelector('input[name="nota"]').value;
+      const nota_media = 0;
       const tipo = form.querySelector('select[name="tipo"]').value;
       const id_empresa = localStorage.getItem('usuarioId'); 
 
@@ -140,6 +140,9 @@
           <li class="nav-item">
             <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
           </li>
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../IA/avaliacaoIA.html">Avaliação de Local</a>
+          </li>
         </ul>
         <ul class="nav flex-column flex-md-row">
           <li class="nav-item">
@@ -180,9 +183,6 @@
 
 	      <label for="cep">CEP:</label>
 	      <input type="text" id="cep" name="cep" required><br>
-
-	      <label for="nota">Nota:</label>
-	      <input type="number" id="nota" name="nota" step="0.1" min="0" max="5"><br>
 
 	      <label for="tipo">Tipo de Local:</label>
 	      <select id="tipo" name="tipo" required>

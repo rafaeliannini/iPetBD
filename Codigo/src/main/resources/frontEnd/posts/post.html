@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPet</title>
-    <link rel="icon" href="../imagens/logoPet.png" type="image/x-icon">
+    <link rel="icon" href="../../imagens/logoPet.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,10 +56,10 @@
         .rating {
             display: flex;
             align-items: center;
-            color: #d6660a; /* Cor laranja para a estrela */
+            color: #d6660a;
         }
         .star {
-            color: #d6660a; /* Cor laranja para a estrela */
+            color: #d6660a; 
             margin-left: 5px;
         }
         .button {
@@ -90,8 +90,8 @@
 }
 
 .post-text {
-    flex: 1; /* Faz com que o texto ocupe o espaço restante */
-    padding-left: 10px; /* Adiciona espaço à esquerda do texto para maior separação */
+    flex: 1; 
+    padding-left: 10px; 
 }
 
 .post h2 {
@@ -100,55 +100,57 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Montserrat', sans-serif; /* Fonte moderna */
-    font-weight: 600; /* Estilo de fonte mais pesado */
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
 }
 
 .description {
     margin: 10px 0;
-    font-family: 'Montserrat', sans-serif; /* Fonte moderna */
-    font-weight: 400; /* Peso normal */
-    color: #555; /* Cor mais suave para o texto */
-    line-height: 1.6; /* Aumenta a altura da linha para melhor legibilidade */
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 400; 
+    color: #555;
+    line-height: 1.6;
 }
 
     </style>
 </head>
 <body>
-	<header class="container-fluid">
-	  <div class="d-flex flex-column flex-md-row align-items-center">
-	    <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
-	    <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
-	      <ul class="nav flex-column flex-md-row">
-	        <li class="nav-item">
-	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
-	        </li>
-	        <li class="nav-item">
-	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
-	        </li>
-	        <li class="nav-item">
-	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
-	        </li>
-	        <li class="nav-item">
-	          <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
-	        </li>
-	      </ul>
-	      <ul class="nav flex-column flex-md-row">
-	        <li class="nav-item">
-	          <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
-	        </li>
-	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
-	          <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
-	        </li>
-	        <li class="nav-item mt-2 mt-md-0 ms-md-2">
-	          <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
-	        </li>
-	      </ul>
-	    </nav>
-	  </div>
-	  <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
-	</header>
-
+  <header class="container-fluid">
+    <div class="d-flex flex-column flex-md-row align-items-center">
+      <a href="../index.html"><img src="../../imagens/logoPet.png" width="130px" height="100px" alt="Logo" class="me-3"></a>
+      <nav class="d-flex flex-column flex-md-row justify-content-between w-100">
+        <ul class="nav flex-column flex-md-row">
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroProduto/produto.html">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroLocal/local.html">Lazer</a>
+          </li>
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroServicos/servicos.html">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../cadastroEventos/evento.html">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a id="corT" class="nav-link fw-bold fs-5 fs-md-2" href="../IA/avaliacaoIA.html">Avaliação de Local</a>
+          </li>
+        </ul>
+        <ul class="nav flex-column flex-md-row">
+          <li class="nav-item">
+            <a id="logarLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/loginForm.html" style="background-color: #d6660a;">Logar</a>
+          </li>
+          <li class="nav-item mt-2 mt-md-0 ms-md-2">
+            <a id="inscreverLink" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/cadastroForm.html" style="background-color: #d6660a;">Se inscrever</a>
+          </li>
+          <li class="nav-item mt-2 mt-md-0 ms-md-2">
+            <a id="contaIcon" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="../login/signup/perfil.html" style="background-color: #d6660a;">Conta</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
+  </header>
 
 <div class="container">
     <div class="header">
@@ -202,51 +204,113 @@
   </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Requisição para buscar todos os posts
-  fetch('http://localhost:6789/posts', { method: 'GET' })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro ao carregar os posts');
-      }
-      return response.json();
-    })
-    .then(postsResponse => {
-      const localId = localStorage.getItem('localId'); 
-      const postsContainer = document.getElementById('posts-container');
-      postsContainer.innerHTML = ''; 
-
-      if (!localId) {
-        postsContainer.innerHTML = '<p>Nenhum local foi selecionado.</p>';
-        return;
-      }
-
-      const postsFiltrados = postsResponse.filter(post => post.id_local == localId);
-
-      if (postsFiltrados.length === 0) {
-        postsContainer.innerHTML = '<p>Nenhum post encontrado para este local.</p>';
+  document.addEventListener("DOMContentLoaded", async function () {
+      const usuarioId = localStorage.getItem("usuarioId");
+      const tipoCadastro = localStorage.getItem("tipoCadastro");
+  
+      const criarPostBtn = document.getElementById("fazerPostBtn");
+      if (!usuarioId || tipoCadastro !== "usuario") {
+          criarPostBtn.style.display = "none";
       } else {
-        postsFiltrados.forEach(post => {
-          const postHTML = `
-            <div class="post">
-              <div class="post-content">
-                <img src="${post.imagem}" alt="Imagem do post" class="post-image">
-                <div class="post-text">
-                  <h2>${post.id_usuario.nome}<span class="rating">&#9733; ${post.nota} / 5</span></h2>
-                  <div class="description">${post.conteudo}</div>
-                </div>
-              </div>
-            </div>
-          `;
-          postsContainer.innerHTML += postHTML; 
-        });
+          criarPostBtn.style.display = "block";
       }
-    })
-    .catch(error => {
-      console.error('Erro:', error);
-    });
-});
+  
+      fetch("http://localhost:6789/posts", { method: "GET" })
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error("Erro ao carregar os posts");
+              }
+              return response.json();
+          })
+          .then((postsResponse) => {
+              const localId = localStorage.getItem("localId");
+              const postsContainer = document.getElementById("posts-container");
+              postsContainer.innerHTML = "";
+  
+              if (!localId) {
+                  postsContainer.innerHTML = "<p>Nenhum local foi selecionado.</p>";
+                  return;
+              }
+  
+              const postsFiltrados = postsResponse.filter((post) => post.id_local == localId);
+  
+              if (postsFiltrados.length === 0) {
+                  postsContainer.innerHTML = "<p>Nenhum post encontrado para este local.</p>";
+              } else {
+                postsFiltrados.forEach((post) => {
+                const dataFormatada = formatarData(post.data);
+
+                let imagemHTML = "";
+
+                if (post.imagem && post.imagem.trim()) {
+                    const tempImg = new Image();
+                    tempImg.src = post.imagem;
+
+                    tempImg.onload = () => {
+                        imagemHTML = `<img src="${post.imagem}" alt="Imagem do post" class="post-image">`;
+
+                        renderizarPost();
+                    };
+
+                    tempImg.onerror = () => {
+                        imagemHTML = "";
+                        renderizarPost();
+                    };
+                } else {
+                    renderizarPost();
+                }
+
+                function renderizarPost() {
+                    const postHTML = `
+                        <div class="post">
+                            <div class="post-content">
+                                ${imagemHTML}
+                                <div class="post-text">
+                                    <h2>${post.nome}
+                                        <span class="rating">&#9733; ${post.nota} / 5</span>
+                                    </h2>
+                                    <div class="description">${post.conteudo}</div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-3">
+                                <span style="font-size: 0.9rem; color: #555;">${dataFormatada}</span>
+                            </div>
+                        </div>
+                    `;
+                    postsContainer.innerHTML += postHTML;
+                }
+            });
+            }
+          })
+          .catch((error) => {
+              console.error("Erro:", error);
+          });
+  });
+  
+  function formatarData(dataString) {
+    if (!dataString) return "Data inválida"; 
+    const dataNormalizada = dataString.replace(/-/g, '/'); 
+    const data = new Date(dataNormalizada); 
+    if (isNaN(data)) return "Data inválida"; 
+
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
+
+  document.getElementById("fazerPostBtn").addEventListener("click", function () {
+      const localId = localStorage.getItem("localId");
+      if (localId) {
+          window.location.href = `../posts/create-post.html?id_local=${localId}`;
+      } else {
+          alert("Erro: Nenhum local selecionado.");
+      }
+  });
+  
 </script>
+  
 <script>
 	document.getElementById("fazerPostBtn").addEventListener("click", function() {
 	  const localId = localStorage.getItem('localId');
