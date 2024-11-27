@@ -51,29 +51,28 @@
         <hr style="border-top: 2px solid black; width: 100%; margin-top: 0px;">
       </header>
 
-  <section id="Avaliacao" class="container mt-5">
-    <h1 id="corT2" class="text-center fw-bold">Avalie Locais Pet-Friendly</h1>
-    <p class="text-center" id="corT3">Envie uma imagem do local e receba uma avaliação detalhada sobre limpeza, organização feita por uma Inteligência Artificial</p>
-    <div class="d-flex justify-content-center">
-      <form id="avaliacaoForm" class="w-75" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="nomeLocal" class="form-label fw-bold" id="corT">Nome do Local</label>
-          <input type="text" class="form-control" id="nomeLocal" placeholder="Digite o nome do local" required>
+      <section id="Avaliacao" class="container mt-5 d-flex justify-content-center align-items-center flex-column">
+        <div class="text-center">
+          <h1>Avaliação de Locais</h1>
+          <form id="avaliacaoForm" class="mt-4">
+            <div class="mb-3">
+              <label for="nomeLocal" class="form-label">Nome do Local</label>
+              <input type="text" class="form-control text-center" id="nomeLocal" placeholder="Digite o nome do local" required>
+            </div>
+            <div class="mb-3">
+              <label for="linkImagem" class="form-label">Link da Imagem</label>
+              <input type="url" class="form-control text-center" id="linkImagem" placeholder="Cole o link da imagem" required>
+            </div>
+            <button type="submit" class="btn text-light fw-bold" style="background-color: #d6660a;">Avaliar</button>
+          </form>
+    
+          <div id="resultado" class="mt-4" style="display: none;">
+            <h3>Resultado</h3>
+            <p id="detalhesAvaliacao"></p>
+            <img id="imagemAvaliacao" src="" alt="Imagem do Local" class="img-fluid mt-3" />
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="imagemLocal" class="form-label fw-bold" id="corT">Imagem do Local</label>
-          <input type="file" class="form-control" id="imagemLocal" accept="image/*" required>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="submit" class="btn text-light fw-bold" id="corB" style="width: 50%;">Enviar</button>
-        </div>
-      </form>
-    </div>
-    <div id="resultado" class="mt-5 text-center" style="display: none;">
-      <h2 id="corT2" class="fw-bold">Resultado da Avaliação</h2>
-      <p id="detalhesAvaliacao"></p>
-    </div>
-  </section>
+      </section>
 
   <footer id="corB3" class="mt-5 p-5">
     <div class="container">
@@ -117,30 +116,73 @@
   </footer>
 
   <script>
-    document.getElementById("avaliacaoForm").addEventListener("submit", function (event) {
+    const API_URL = "https://ipetcustomvision-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/94d6564f-f169-4587-a2fe-bdd956c77bb9/classify/iterations/Iteration1/url";
+    const PREDICTION_KEY = "9tiYuiw4lAMWVMOaXiSxaIX8RO45p6Xka04QHaYXPPlWUypMIqv0JQQJ99AKACYeBjFXJ3w3AAAIACOGaaAo";
+
+    document.getElementById("avaliacaoForm").addEventListener("submit", async function (event) {
       event.preventDefault();
 
       const nomeLocal = document.getElementById("nomeLocal").value;
-      const imagemLocal = document.getElementById("imagemLocal").files[0];
+      const linkImagem = document.getElementById("linkImagem").value;
 
-      if (!nomeLocal || !imagemLocal) {
+      if (!nomeLocal || !linkImagem) {
         alert("Por favor, preencha todos os campos!");
         return;
       }
 
       const resultadoDiv = document.getElementById("resultado");
       const detalhesAvaliacao = document.getElementById("detalhesAvaliacao");
+      const imagemAvaliacao = document.getElementById("imagemAvaliacao");
 
-      resultadoDiv.style.display = "block";
-      detalhesAvaliacao.innerHTML = `
-        O local <strong>${nomeLocal}</strong> recebeu a seguinte avaliação:
-        <ul class="text-start d-inline-block">
-          <li>Limpeza: 9/10</li>
-          <li>Organização: 8/10</li>
-          <li>Acessibilidade: 7/10</li>
-          <li>Amigável para pets: 10/10</li>
-        </ul>
-      `;
+      imagemAvaliacao.src = linkImagem;
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Prediction-Key": PREDICTION_KEY,
+          },
+          body: JSON.stringify({ Url: linkImagem }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          const predictions = result.predictions;
+          const topPrediction = predictions[0];
+          const tagName = topPrediction.tagName; 
+          const confidence = (topPrediction.probability * 100).toFixed(2);
+
+          let comentario = '';
+          if (confidence > 80) {
+            if (tagName === "Otimo") {
+              comentario = "Provavelmente, o local apresenta excelentes condições de limpeza e organização. É altamente recomendado!";
+            } else if (tagName === "Medio") {
+              comentario = "Provavelmente, o local está em condições razoáveis, mas pode melhorar em alguns aspectos de limpeza ou organização.";
+            } else if (tagName === "Ruim") {
+              comentario = "Provavelmente, os níveis de limpeza e organização do local estão insatisfatórios. Recomendamos atenção ao visitar.";
+            }
+          } else {
+            comentario = "Os resultados não são conclusivos. Recomendamos uma análise mais detalhada ou a consideração de outras informações antes de tomar uma decisão sobre este local.";
+          }
+
+          resultadoDiv.style.display = "block";
+          detalhesAvaliacao.innerHTML = `
+            O local <strong>${nomeLocal}</strong> foi avaliado como: <strong>${tagName}</strong> 
+            com uma confiança de <strong>${confidence}%</strong>.
+            <br>
+            ${comentario ? `<p>${comentario}</p>` : ""}
+          `;
+        } else {
+          throw new Error("Erro na API: " + result.message);
+        }
+      } catch (error) {
+        resultadoDiv.style.display = "block";
+        detalhesAvaliacao.innerHTML = `
+          <p class="text-danger">Houve um erro ao processar sua solicitação: ${error.message}</p>
+        `;
+      }
     });
   </script>
 

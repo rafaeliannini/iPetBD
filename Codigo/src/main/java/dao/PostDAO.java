@@ -12,12 +12,12 @@ public class PostDAO {
     
     public boolean conectar() {
         String driverName = "org.postgresql.Driver";
-        String serverName = "localhost";
+        String serverName = "banco-dados-ipet.postgres.database.azure.com";
         String mydatabase = "iPet";
         int porta = 5432;
         String url = "jdbc:postgresql://" + serverName + ":" + porta + "/" + mydatabase;
-        String username = "postgres";
-        String password = "pao123";
+        String username = "iPetAdministrador";
+        String password = "BancoDeDados123*";
         boolean status = false;
 
         try {
