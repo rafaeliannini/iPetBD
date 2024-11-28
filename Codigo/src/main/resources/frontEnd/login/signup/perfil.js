@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const url = tipoCadastro === 'empresa' ? `/empresa/${usuarioId}` : `/usuario/${usuarioId}`;
 
     try {
-        const response = await fetch(`http://localhost:6789${url}`, {
+        const response = await fetch(`https://ipetbh.azurewebsites.net${url}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
 
         try {
-            const response = await fetch(`http://localhost:6789${url}`, {
+            const response = await fetch(`https://ipetbh.azurewebsites.net${url}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

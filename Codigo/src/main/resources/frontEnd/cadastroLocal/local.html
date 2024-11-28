@@ -116,7 +116,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        fetch("http://localhost:6789/locais", { method: "GET" })
+        fetch("https://ipetbh.azurewebsites.net/locais", { method: "GET" })
           .then(response => {
             if (!response.ok) {
               throw new Error('Erro ao carregar os locais de lazer');

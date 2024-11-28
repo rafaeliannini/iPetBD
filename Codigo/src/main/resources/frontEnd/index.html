@@ -155,7 +155,7 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
-	    fetch("http://localhost:6789/produtos", { method: "GET" })
+	    fetch("https://ipetbh.azurewebsites.net/produtos", { method: "GET" })
 	      .then(response => {
 	        if (!response.ok) {
 	          throw new Error('Erro na resposta da API');

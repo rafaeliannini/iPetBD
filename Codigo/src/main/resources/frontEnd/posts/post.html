@@ -215,7 +215,7 @@
           criarPostBtn.style.display = "block";
       }
   
-      fetch("http://localhost:6789/posts", { method: "GET" })
+      fetch("https://ipetbh.azurewebsites.net/posts", { method: "GET" })
           .then((response) => {
               if (!response.ok) {
                   throw new Error("Erro ao carregar os posts");

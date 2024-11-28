@@ -182,7 +182,7 @@
             return;
         }
 
-        fetch(`http://localhost:6789/local/${localId}`, { method: "GET" })
+        fetch(`https://ipetbh.azurewebsites.net/local/${localId}`, { method: "GET" })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao carregar o local');
@@ -206,7 +206,7 @@
                     window.location.href = '../index.html#Mapa';
                 };
 
-                return fetch(`http://localhost:6789/posts`, { method: "GET" });
+                return fetch(`https://ipetbh.azurewebsites.net/posts`, { method: "GET" });
             })
             .then(response => {
                 if (!response.ok) {

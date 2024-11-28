@@ -186,7 +186,7 @@
             const productPriceElement = document.getElementById('productPrice');
             const averageRatingElement = document.getElementById('averageRating');
 
-            fetch(`http://localhost:6789/produto/${productId}`)
+            fetch(`https://ipetbh.azurewebsites.net/produto/${productId}`)
                 .then(response => response.json())
                 .then(product => {
                     productNameElement.textContent = product.nome;

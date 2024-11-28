@@ -266,7 +266,7 @@ h3 {
         return;
       }
 
-      fetch("http://localhost:6789/posts", { method: "GET" })
+      fetch("https://ipetbh.azurewebsites.net/posts", { method: "GET" })
         .then(response => {
           if (!response.ok) {
             throw new Error('Erro na resposta da API');
@@ -284,7 +284,7 @@ h3 {
             postContainer.innerHTML = "<p>Nenhum post encontrado.</p>";
           } else {
             const promises = postsFiltrados.map(post => {
-          return fetch(`http://localhost:6789/local/${post.id_local}`, { method: "GET" })
+          return fetch(`https://ipetbh.azurewebsites.net/local/${post.id_local}`, { method: "GET" })
             .then(response => {
               if (!response.ok) {
                 throw new Error(`Erro ao buscar local para o post ${post.id_post}`);
@@ -292,12 +292,12 @@ h3 {
               return response.json();
             })
             .then(local => {
-              post.localNome = local.nome; // Adiciona o nome do local ao objeto do post
+              post.localNome = local.nome; 
               return post;
             })
             .catch(error => {
               console.error(`Erro ao buscar local para o post ${post.id_post}:`, error);
-              post.localNome = "Local não encontrado"; // Valor padrão em caso de erro
+              post.localNome = "Local não encontrado"; 
               return post;
             });
         });
@@ -344,7 +344,7 @@ document.getElementById('form-edit').addEventListener('submit', async function (
   };
 
   try {
-    const response = await fetch(`http://localhost:6789/post/${postIdParaEditar}`, {
+    const response = await fetch(`https://ipetbh.azurewebsites.net/post/${postIdParaEditar}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -394,7 +394,7 @@ function confirmarExclusao(postId) {
 
 async function excluirPostConfirmado() {
   try {
-    const response = await fetch(`http://localhost:6789/post/${postIdParaExcluir}`, {
+    const response = await fetch(`https://ipetbh.azurewebsites.net/post/${postIdParaExcluir}`, {
       method: 'DELETE'
     });
 

@@ -15,7 +15,7 @@ async function cadastrarUsuario(event) {
     };
 
     try {
-        const response = await fetch(`http://localhost:6789${url}`, {
+        const response = await fetch(`https://ipetbh.azurewebsites.net${url}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ async function login(event) {
     };
 
     try {
-        const response = await fetch(`http://localhost:6789${url}`, {
+        const response = await fetch(`https://ipetbh.azurewebsites.net${url}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

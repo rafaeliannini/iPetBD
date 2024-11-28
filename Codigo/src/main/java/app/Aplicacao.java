@@ -37,7 +37,7 @@ public class Aplicacao {
 
     
     public static void main(String[] args) {
-        port(6789);
+        port(80);
         enableCORS("*", "GET, POST, PUT, DELETE, OPTIONS", "Content-Type, Authorization");
         
         // Rotas para Usuario
